@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+
+<body>
+    <div id="score">Score: 0</div> <!-- スコア表示部分 -->
+    <div id="time">Time: 30</div> <!-- タイマー表示部分 -->
+    <canvas id="pond" width="800" height="600" style="border:1px solid #000000;"></canvas> <!-- ゲーム画面 -->
+
+    <script>
+        var canvas = document.getElementById('pond');
+        var ctx = canvas.getContext('2d');
+    </script>
+
+    <script src="gameSystem.js"></script> <!-- ゲームシステム関連のスクリプトを読み込む -->
+    <script src="fish.js"></script> <!-- 魚関連のスクリプトを読み込む -->
+    <script src="poi.js"></script> <!-- ポイ(網)関連のスクリプトを読み込む -->
+    <script src="stage.js"></script> <!-- ステージ関連のスクリプトを読み込む -->
+</body>
+
+</html>
