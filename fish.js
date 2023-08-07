@@ -8,14 +8,14 @@ class Fish { // 魚クラス
         this.speed = type.speed; // 魚の移動速度
         this.direction = Math.random() * Math.PI * 2; // 魚の移動方向(初期方向はランダム)
     }
-
+//変えたところここから
     // 魚を描画する関数
     draw() {
-        ctx.beginPath();
-        ctx.arc(this.x, this.y, this.radius, 0, Math.PI * 2);
-        ctx.fillStyle = this.color;
-        ctx.fill();
+        var image = new Image();
+        image.src = 'img/' + this.color + '.png';
+        ctx.drawImage(image, this.x - this.radius, this.y - this.radius, this.radius * 2, this.radius * 2);
     }
+//ここまで
 
     // 魚の位置を更新する関数
     updatePosition() {
@@ -36,5 +36,3 @@ class Fish { // 魚クラス
         return distance < (this.radius + 50); // 50 is the radius of the poi
     }
 }
-
-
