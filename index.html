@@ -1,11 +1,27 @@
 <!DOCTYPE html>
 <html>
-
+    <style>
+        /* canvas要素の背景に画像を設定 */
+        canvas#pond {
+          /* 画像のファイルパスは相対パスで指定します */
+          background-image: url("img/stage.jpg");
+          /* 背景画像の位置を中央に設定します */
+          background-position: center;
+          /* 背景画像のサイズをカバーするように設定します */
+          background-size: cover;
+          /* 背景画像を繰り返さないように設定します */
+          background-repeat: no-repeat;
+          /* ページ全体の高さが背景画像より小さい場合に背景を固定する */
+          background-attachment: fixed;
+        }
+      </style>
+    
 <body>
+   
     <div id="score">Score: 0</div> <!-- スコア表示部分 -->
     <div id="time">Time: 30</div> <!-- タイマー表示部分 -->
-    <canvas id="pond" width="800" height="600" style="border:1px solid #000000;"></canvas> <!-- ゲーム画面 -->
-
+    <canvas id="pond" width="1440" height="750" style="border:1px solid #000000;"></canvas> <!-- ゲーム画面 -->
+        
     <script>
         var canvas = document.getElementById('pond');
         var ctx = canvas.getContext('2d');

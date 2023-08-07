@@ -1,11 +1,14 @@
 var canvas = document.getElementById('pond'); // キャンバス要素を取得
 var ctx = canvas.getContext('2d'); // 描画コンテキストを取得
+
 var fishes = []; // 魚オブジェクトを格納する配列
 var fishTypes = [
     { color: 'red', points: 1, speed: 2 },
     { color: 'black', points: 2, speed: 3 },
     { color: 'gold', points: 3, speed: 4 },
 ];
+
+
 
 // 魚を生成する関数
 function createFish() {
