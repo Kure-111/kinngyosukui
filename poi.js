@@ -1,3 +1,6 @@
+let successSound = new Audio('audio/get.mp3');
+let failSound = new Audio('audio/out.mp3');
+
 var poiImage = new Image(); // 新しい画像オブジェクトを作成
 poiImage.src = 'img/poi.png'; // ポイの画像ファイルへのパスを設定
 
@@ -27,7 +30,6 @@ canvas.addEventListener('mousemove', function (e) {
     drawFish(); // 魚を描画
 });
 
-
 // キャンバスをクリックしたときのイベントリスナー
 canvas.addEventListener('click', function (e) {
     if (gameRunning && !isPoiBroken) { // ポイが破れていないときのみ魚を捕まえられる
@@ -35,23 +37,29 @@ canvas.addEventListener('click', function (e) {
         fishes = fishes.filter(function (fish) {
             if (fish.isCaughtByPoi(mouseX, mouseY)) {
                 if (Math.random() <= 0.5) { // 50%の確率で魚が釣れる
+                    successSound.play(); // 魚が釣れたときの音声を再生
                     score += fish.points;
                     updateScore(score); // スコアを更新
                     caught = true;
+
                 }
                 return false;
             }
-            return true;
+            return false;
         });
 
         if (!caught) { // 魚を捕まえられなかったとき、または50%の確率で釣りを失敗したとき
+            failSound.play(); // 魚が釣れなかったときの音声を再生
             isPoiBroken = true; // ポイを破れた状態にする
+
             setTimeout(function () {
                 isPoiBroken = false; // 0.5秒後にポイを元の状態に戻す
             }, 500);
         }
     }
 });
+
+
 
 
 
