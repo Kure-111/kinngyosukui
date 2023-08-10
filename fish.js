@@ -7,6 +7,7 @@ class Fish { // 魚クラス
         this.points = type.points; // 魚の得点
         this.speed = type.speed; // 魚の移動速度
         this.direction = Math.random() * Math.PI * 2; // 魚の移動方向(初期方向はランダム)
+        this.randomDirectionCounter = 10; // 初期値として10を設定
     }
 //変えたところここから
     // 魚を描画する関数
@@ -18,15 +19,22 @@ class Fish { // 魚クラス
 //ここまで
 
     // 魚の位置を更新する関数
-    updatePosition() {
-        this.x += Math.cos(this.direction) * this.speed;
-        this.y += Math.sin(this.direction) * this.speed;
-
-        if (this.x < this.radius) this.direction = Math.PI - this.direction;
-        else if (this.x > canvas.width - this.radius) this.direction = Math.PI - this.direction;
-        if (this.y < this.radius) this.direction = -this.direction;
-        else if (this.y > canvas.height - this.radius) this.direction = -this.direction;
+updatePosition() {
+    if (this.randomDirectionCounter <= 0) { // カウンターが0以下の場合、新しいランダムな方向を設定
+        this.direction = Math.random() * Math.PI * 2;
+        this.randomDirectionCounter = 10; // カウンターをリセット
+    } else {
+        this.randomDirectionCounter--; // カウンターを減少させる
     }
+
+    this.x += Math.cos(this.direction) * this.speed;
+    this.y += Math.sin(this.direction) * this.speed;
+
+    if (this.x < this.radius) this.direction = Math.PI - this.direction;
+    else if (this.x > canvas.width - this.radius) this.direction = Math.PI - this.direction;
+    if (this.y < this.radius) this.direction = -this.direction;
+    else if (this.y > canvas.height - this.radius) this.direction = -this.direction;
+}
 
     // 魚が網に捕まっているかどうか判定する関数
     isCaughtByPoi(x, y) {
