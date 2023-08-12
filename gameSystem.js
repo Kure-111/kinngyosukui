@@ -15,13 +15,14 @@ function updateTime() {
         document.getElementById('time').textContent = 'Time: ' + time;
         if (time <= 0) { // タイムが0になったらゲーム終了
             gameRunning = false;
-            alert('Time\'s up! Your final score is ' + score + '.');
+            window.location.href = "result.html?score=" + score; // リザルト画面への遷移
         }
     }
 }
 
 // 1秒ごとにupdateTime関数を呼び出す
 setInterval(updateTime, 1000);
+
 
 
 

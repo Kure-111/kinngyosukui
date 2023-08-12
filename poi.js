@@ -34,19 +34,19 @@ canvas.addEventListener('mousemove', function (e) {
 canvas.addEventListener('click', function (e) {
     if (gameRunning && !isPoiBroken) { // ポイが破れていないときのみ魚を捕まえられる
         var caught = false;
-        fishes = fishes.filter(function (fish) {
-            if (fish.isCaughtByPoi(mouseX, mouseY)) {
-                if (Math.random() <= 0.5) { // 50%の確率で魚が釣れる
-                    successSound.play(); // 魚が釣れたときの音声を再生
-                    score += fish.points;
-                    updateScore(score); // スコアを更新
-                    caught = true;
 
-                }
-                return false;
+
+        for (let i = 0; i < fishes.length; i++) {
+            let fish = fishes[i];
+            if (fish.isCaughtByPoi(mouseX, mouseY) && Math.random() <= 0.9) {
+                successSound.play(); // 魚が釣れたときの音声を再生
+                score += fish.points;
+                updateScore(score); // スコアを更新
+                fishes.splice(i, 1);
+                caught = true;
+                break;
             }
-            return false;
-        });
+        }
 
         if (!caught) { // 魚を捕まえられなかったとき、または50%の確率で釣りを失敗したとき
             failSound.play(); // 魚が釣れなかったときの音声を再生
@@ -58,6 +58,7 @@ canvas.addEventListener('click', function (e) {
         }
     }
 });
+
 
 
 
