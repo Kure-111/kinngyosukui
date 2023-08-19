@@ -14,7 +14,7 @@ var mouseX, mouseY; // マウスの座標
 // ポイ(網)を描画する関数
 function drawPoi(x, y) {
     var image = isPoiBroken ? poiBrakImage : poiImage; // ポイが破れている場合は破れた画像、そうでない場合は通常の画像を選択
-    ctx.drawImage(image, x - 50, y - 100, 100, 200); // 画像を描画（50は画像の半分のサイズ）
+    ctx.drawImage(image, x - 50, y - 50, 100, 200); // 画像を描画（50は画像の半分のサイズ）
 }
 
 
@@ -29,6 +29,13 @@ canvas.addEventListener('mousemove', function (e) {
     drawPoi(mouseX, mouseY); // ポイを描画
     drawFish(); // 魚を描画
 });
+// setInterval(function () {
+//     ctx.clearRect(0, 0, canvas.width, canvas.height); // 画面をクリア
+
+
+//     drawPoi(mouseX, mouseY); // ポイを描画
+//     drawFish(); // 魚を描画
+// }, 100);
 
 // キャンバスをクリックしたときのイベントリスナー
 canvas.addEventListener('click', function (e) {
@@ -58,6 +65,7 @@ canvas.addEventListener('click', function (e) {
         }
     }
 });
+
 
 
 
