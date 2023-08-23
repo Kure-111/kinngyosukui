@@ -17,31 +17,26 @@ function drawPoi(x, y) {
     ctx.drawImage(image, x - 50, y - 50, 100, 200); // 画像を描画（50は画像の半分のサイズ）
 }
 
-
 // マウスを動かしたときのイベントリスナー
 canvas.addEventListener('mousemove', function (e) {
     var rect = canvas.getBoundingClientRect(); // キャンバスの位置情報を取得
     mouseX = e.clientX - rect.left; // マウスのx座標
     mouseY = e.clientY - rect.top; // マウスのy座標
+});
 
+// 定期的に画面を更新するタイマーを設定（100ミリ秒ごと）
+setInterval(function () {
     ctx.clearRect(0, 0, canvas.width, canvas.height); // 画面をクリア
 
+    // ポイと金魚を描画
     drawPoi(mouseX, mouseY); // ポイを描画
     drawFish(); // 魚を描画
-});
-// setInterval(function () {
-//     ctx.clearRect(0, 0, canvas.width, canvas.height); // 画面をクリア
-
-
-//     drawPoi(mouseX, mouseY); // ポイを描画
-//     drawFish(); // 魚を描画
-// }, 100);
+}, 10);
 
 // キャンバスをクリックしたときのイベントリスナー
 canvas.addEventListener('click', function (e) {
     if (gameRunning && !isPoiBroken) { // ポイが破れていないときのみ魚を捕まえられる
         var caught = false;
-
 
         for (let i = 0; i < fishes.length; i++) {
             let fish = fishes[i];
@@ -65,12 +60,3 @@ canvas.addEventListener('click', function (e) {
         }
     }
 });
-
-
-
-
-
-
-
-
-

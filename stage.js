@@ -24,7 +24,7 @@ function drawFish() {
     });
 }
 
-// 100ミリ秒ごとにこの関数を呼び出す
+// 10ミリ秒ごとにこの関数を呼び出す
 setInterval(function () {
     if (gameRunning) {
         if (Math.random() < 0.1) { // 10%の確率で魚を生成
@@ -34,7 +34,7 @@ setInterval(function () {
     fishes.forEach(function (fish) {
         fish.updatePosition(); // 魚の位置を更新
     });
-}, 100);
+}, 50);
 
 
 
