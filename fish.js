@@ -8,33 +8,37 @@ class Fish { // 魚クラス
         this.speed = type.speed; // 魚の移動速度
         this.direction = Math.random() * Math.PI * 2; // 魚の移動方向(初期方向はランダム)
         this.randomDirectionCounter = 10; // 初期値として10を設定
+
+        // 金魚が動ける範囲を定義（新しく追加した部分）
+        this.minX = 310;
+        this.maxX = 1600;
+        this.minY = 140;
+        this.maxY = 870;
     }
-//変えたところここから
+
     // 魚を描画する関数
     draw() {
         var image = new Image();
         image.src = 'img/' + this.color + '.png';
         ctx.drawImage(image, this.x - this.radius, this.y - this.radius, this.radius * 2, this.radius * 2);
     }
-//ここまで
 
     // 魚の位置を更新する関数
-updatePosition() {
-    if (this.randomDirectionCounter <= 0) { // カウンターが0以下の場合、新しいランダムな方向を設定
-        this.direction = Math.random() * Math.PI * 2;
-        this.randomDirectionCounter = 10; // カウンターをリセット
-    } else {
-        this.randomDirectionCounter--; // カウンターを減少させる
+    updatePosition() {
+        if (this.randomDirectionCounter <= 0) { // カウンターが0以下の場合、新しいランダムな方向を設定
+            this.direction = Math.random() * Math.PI * 2;
+            this.randomDirectionCounter = 10; // カウンターをリセット
+        } else {
+            this.randomDirectionCounter--; // カウンターを減少させる
+        }
+
+        this.x += Math.cos(this.direction) * this.speed;
+        this.y += Math.sin(this.direction) * this.speed;
+
+        // 金魚が新しい位置に移動した後、その位置が範囲内に収まるように調整（新しく追加した部分）
+        this.x = Math.max(this.minX, Math.min(this.maxX, this.x));
+        this.y = Math.max(this.minY, Math.min(this.maxY, this.y));
     }
-
-    this.x += Math.cos(this.direction) * this.speed;
-    this.y += Math.sin(this.direction) * this.speed;
-
-    if (this.x < this.radius) this.direction = Math.PI - this.direction;
-    else if (this.x > canvas.width - this.radius) this.direction = Math.PI - this.direction;
-    if (this.y < this.radius) this.direction = -this.direction;
-    else if (this.y > canvas.height - this.radius) this.direction = -this.direction;
-}
 
     // 魚が網に捕まっているかどうか判定する関数
     isCaughtByPoi(x, y) {

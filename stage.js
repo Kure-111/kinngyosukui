@@ -27,7 +27,7 @@ function drawFish() {
 // 10ミリ秒ごとにこの関数を呼び出す
 setInterval(function () {
     if (gameRunning) {
-        if (Math.random() < 0.1) { // 10%の確率で魚を生成
+        if (Math.random() < 0.1) {
             createFish();
         }
     }

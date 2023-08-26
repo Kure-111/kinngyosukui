@@ -14,7 +14,7 @@ var mouseX, mouseY; // マウスの座標
 // ポイ(網)を描画する関数
 function drawPoi(x, y) {
     var image = isPoiBroken ? poiBrakImage : poiImage; // ポイが破れている場合は破れた画像、そうでない場合は通常の画像を選択
-    ctx.drawImage(image, x - 50, y - 50, 100, 200); // 画像を描画（50は画像の半分のサイズ）
+    ctx.drawImage(image, x - 50, y - 50, 100, 200);
 }
 
 // マウスを動かしたときのイベントリスナー
@@ -24,7 +24,7 @@ canvas.addEventListener('mousemove', function (e) {
     mouseY = e.clientY - rect.top; // マウスのy座標
 });
 
-// 定期的に画面を更新するタイマーを設定（100ミリ秒ごと）
+// 定期的に画面を更新するタイマーを設定（10ミリ秒ごと）
 setInterval(function () {
     ctx.clearRect(0, 0, canvas.width, canvas.height); // 画面をクリア
 
