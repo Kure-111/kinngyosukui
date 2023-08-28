@@ -10,13 +10,14 @@ class Fish { // 魚クラス
         this.randomDirectionCounter = 10; // 初期値として10を設定
 
         // 金魚が動ける範囲を定義（新しく追加した部分）
-        this.minX = 310;
-        this.maxX = 1600;
-        this.minY = 140;
-        this.maxY = 870;
+        //金魚の湧く範囲を変えたい時はここ
+        this.minX = 250;
+        this.maxX = 1200;
+        this.minY = 190;
+        this.maxY = 700;
     }
 
-    
+
 
     // 魚を描画する関数
     draw() {
@@ -42,6 +43,27 @@ class Fish { // 魚クラス
         this.y = Math.max(this.minY, Math.min(this.maxY, this.y));
     }
 
+    draw(rotation) {
+        var image = new Image();
+        image.src = 'img/' + this.color + '.png';
+    
+        ctx.save(); // 現在の描画状態を保存
+    
+        // キャンバスを魚の位置に移動
+        ctx.translate(this.x, this.y);
+    
+        // 魚の動き方向とx軸との角度を計算
+        var fishAngle = Math.atan2(Math.sin(this.direction), Math.cos(this.direction));
+    
+        // キャンバスを魚の角度+90度回転
+        ctx.rotate(fishAngle + Math.PI / 2);
+    
+        // 魚の画像を描画し、頭をy軸に合わせて描画
+        ctx.drawImage(image, -this.radius, -this.radius, this.radius * 2, this.radius * 2);
+    
+        ctx.restore(); // 前の描画状態に戻す
+    }
+    
     // 魚が網に捕まっているかどうか判定する関数
     isCaughtByPoi(x, y) {
         var dx = x - this.x;
