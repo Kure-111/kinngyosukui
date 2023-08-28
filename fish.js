@@ -15,7 +15,7 @@ class Fish { // 魚クラス
         this.minY = 140;
         this.maxY = 870;
     }
-
+//tests
     // 魚を描画する関数
     draw() {
         var image = new Image();
