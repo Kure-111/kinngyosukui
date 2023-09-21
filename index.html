@@ -38,14 +38,44 @@
           font-size: 40px; /* テキストのサイズ */
           font-family: Arial, sans-serif; /* フォント */
         }
+        .countRed{
+          position: absolute; /* 画面上に固定配置 */
+          top: 190px; /* 画面上部からの距離 */
+          left: 300px; /* 画面左からの距離 */
+          color: white; /* テキストの色 */
+          font-size: 40px; /* テキストのサイズ */
+          font-family: Arial, sans-serif; /* フォント */
+        }
+        .countBlack{
+          position: absolute; /* 画面上に固定配置 */
+          top: 290px; /* 画面上部からの距離 */
+          left: 400px; /* 画面左からの距離 */
+          color: white; /* テキストの色 */
+          font-size: 40px; /* テキストのサイズ */
+          font-family: Arial, sans-serif; /* フォント */
+        }
+        .countGold{
+          position: absolute; /* 画面上に固定配置 */
+          top: 390px; /* 画面上部からの距離 */
+          left: 400px; /* 画面左からの距離 */
+          color: white; /* テキストの色 */
+          font-size: 40px; /* テキストのサイズ */
+          font-family: Arial, sans-serif; /* フォント */
+        }
       </style>
 
 <body>
     <div class="background-container">
       <div class="background-image1"></div> <!-- 背景画像1 -->
     </div>
+    
     <div class="score" id="score">Score: 0</div> <!-- スコア表示部分 -->
     <div class="timer" id="time">Time: 30</div> <!-- タイマー表示部分 -->
+
+    <div class="countRed" id="countRed">Red: 0</div>
+    <div class="countBlack" id="countBlack">Black: 0</div>
+    <div class="countGold" id="countGold">Gold: 0</div>
+
     <canvas id="pond" width="1600" height="870" style="border:1px solid #00000000;"></canvas> <!-- ゲーム画面 -->
 
     <script>

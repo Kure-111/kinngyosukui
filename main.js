@@ -7,7 +7,7 @@ var fishTypes = [
     { color: 'gold', points: 3, speed: 4 },
 ];
 
-var gameSystem = new GameSystem('score', 'time');
+var gameSystem = new GameSystem('score', 'time','countRed', 'countBlack', 'countGold');
 var stage = new Stage(fishTypes, gameSystem, canvas, ctx);
 var poi = new Poi(canvas, ctx);
 
