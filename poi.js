@@ -45,18 +45,20 @@ canvas.addEventListener('click', function (e) {
                 score += fish.points;
                 updateScore(score); // スコアを更新
                 fishes.splice(i, 1);
-                caught = true;
+                
                  //各金魚の数を更新
-                 if(color = 'red'){
+                 if(fish.color == 'red'){
                     countRed++;
                     updateCountRed(countRed);
-                 }else if(color = 'black'){
+                 }else if(fish.color == 'black'){
                     countBlack++;
                     updateCountBlack(countBlack);
-                 }else if(color = 'gold' ){
+                 }else if(fish.color == 'gold' ){
                     countGold++;
                     updateCountGold(countGold);
                  }
+                caught = true;
+                
                 break;
             }
         }
