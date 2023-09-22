@@ -12,23 +12,20 @@ function updateScore(newScore) {
 }
 
 //金魚別カウント
-function updateCountRed(newRed){
-   countRed = newRed;
-   document.getElementById('countRed').textContent = 'Red: ' + countRed;
-
+function updateCountRed(newRed) {
+    countRed = newRed;
+    document.getElementById('countRed').innerHTML = '<img src="img/red.png" alt="Red: " width="50" height="50">' + ":" + countRed;
 }
 
-function updateCountBlack(newBlack){
+function updateCountBlack(newBlack) {
     countBlack = newBlack;
-    document.getElementById('countBlack').textContent = 'Black: ' + countBlack;
- 
- }
+    document.getElementById('countBlack').innerHTML = '<img src="img/black.png" alt="Black: " width="50" height="50">' + ":" + countBlack;
+}
 
- function updateCountGold(newGold){
+function updateCountGold(newGold) {
     countGold = newGold;
-    document.getElementById('countGold').textContent = 'Gold: ' + countGold;
- 
- }
+    document.getElementById('countGold').innerHTML = '<img src="img/gold.png" alt="Gold: " width="50" height="50">' + ":" + countGold;
+}
 
 // タイムを更新する関数
 function updateTime() {

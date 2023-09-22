@@ -1,85 +1,119 @@
 <!DOCTYPE html>
 <html>
-    <style>
+<style>
+  .background-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+    /* 背景を後ろに配置 */
+  }
 
-        .background-container {
-          position: fixed;
-          top: 0;
-          left: 0;
-          width: 100%;
-          height: 100%;
-          z-index: -1; /* 背景を後ろに配置 */
-        }
-        .background-image1 {
-          background-image: url("img/stage2.PNG");
-          background-size: cover;
-          background-position: center;
-          width: 100%;
-          height: 100%;
+  .background-image1 {
+    background-image: url("img/stage2.PNG");
+    background-size: cover;
+    background-position: center;
+    width: 100%;
+    height: 100%;
 
-        }
-        
-        
+  }
 
-        
 
-        .timer {
-          position: absolute; /* 画面上に固定配置 */
-          top:790px; /* 画面上部からの距離 */
-          left: 600px; /* 画面左からの距離 */
-          color:white; /* テキストの色 */
-          font-size: 40px; /* テキストのサイズ */
-          font-family: Arial, sans-serif; /* フォント */
-        }
-        .countRed{
-          position: absolute; /* 画面上に固定配置 */
-          top: 740px; /* 画面上部からの距離 */
-          left: 200px; /* 画面左からの距離 */
-          color: white; /* テキストの色 */
-          font-size: 40px; /* テキストのサイズ */
-          font-family: Arial, sans-serif; /* フォント */
-        }
-        .countBlack{
-          position: absolute; /* 画面上に固定配置 */
-          top: 740px; /* 画面上部からの距離 */
-          left: 500px; /* 画面左からの距離 */
-          color: white; /* テキストの色 */
-          font-size: 40px; /* テキストのサイズ */
-          font-family: Arial, sans-serif; /* フォント */
-        }
-        .countGold{
-          position: absolute; /* 画面上に固定配置 */
-          top: 740px; /* 画面上部からの距離 */
-          left: 800px; /* 画面左からの距離 */
-          color: white; /* テキストの色 */
-          font-size: 40px; /* テキストのサイズ */
-          font-family: Arial, sans-serif; /* フォント */
-        }
-      </style>
+
+
+
+  .timer {
+    position: absolute;
+    /* 画面上に固定配置 */
+    top: 790px;
+    /* 画面上部からの距離 */
+    left: 600px;
+    /* 画面左からの距離 */
+    color: white;
+    /* テキストの色 */
+    font-size: 40px;
+    /* テキストのサイズ */
+    font-family: Arial, sans-serif;
+    /* フォント */
+  }
+
+  .countRed {
+    position: absolute;
+    /* 画面上に固定配置 */
+    top: 740px;
+    /* 画面上部からの距離 */
+    left: 200px;
+    /* 画面左からの距離 */
+    color: white;
+    /* テキストの色 */
+    font-size: 40px;
+    /* テキストのサイズ */
+    font-family: Arial, sans-serif;
+    /* フォント */
+  }
+
+  .countBlack {
+    position: absolute;
+    /* 画面上に固定配置 */
+    top: 740px;
+    /* 画面上部からの距離 */
+    left: 500px;
+    /* 画面左からの距離 */
+    color: white;
+    /* テキストの色 */
+    font-size: 40px;
+    /* テキストのサイズ */
+    font-family: Arial, sans-serif;
+    /* フォント */
+  }
+
+  .countGold {
+    position: absolute;
+    /* 画面上に固定配置 */
+    top: 740px;
+    /* 画面上部からの距離 */
+    left: 800px;
+    /* 画面左からの距離 */
+    color: white;
+    /* テキストの色 */
+    font-size: 40px;
+    /* テキストのサイズ */
+    font-family: Arial, sans-serif;
+    /* フォント */
+  }
+</style>
 
 <body>
-    <div class="background-container">
-      <div class="background-image1"></div> <!-- 背景画像1 -->
-    </div>
-    
-    <div class="score" id="score">Score: 0</div>
-    <div class="timer" id="time">Time: 30</div> <!-- タイマー表示部分 -->
+  <div class="background-container">
+    <div class="background-image1"></div> <!-- 背景画像1 -->
+  </div>
 
-    <div class="countRed" id="countRed">Red: 0</div>
-    <div class="countBlack" id="countBlack">Black: 0</div>
-    <div class="countGold" id="countGold">Gold: 0</div>
+  <div class="score" id="score">Score: 0</div>
+  <div class="timer" id="time">Time: 30</div> <!-- タイマー表示部分 -->
 
-    <canvas id="pond" width="1600" height="870" style="border:1px solid #00000000;"></canvas> <!-- ゲーム画面 -->
+  <div class="countRed" id="countRed"><img src="img/red.png" width="50" height="50">
+    : 0
+  </div>
+  <div class="countBlack" id="countBlack"><img src="img/black.png" width="50" height="50">
+    : 0
+  </div>
+  <div class="countGold" id="countGold"><img src="img/gold.png" width="50" height="50">
+    : 0
+  </div>
 
-    <script>
-        var canvas = document.getElementById('pond');
-        var ctx = canvas.getContext('2d');
-    </script>
+  <canvas id="pond" width="1600" height="870" style="border:1px solid #00000000;"></canvas> <!-- ゲーム画面 -->
 
-    <script src="gameSystem.js"></script> <!-- ゲームシステム関連のスクリプトを読み込む -->
-    <script src="fish.js"></script> <!-- 魚関連のスクリプトを読み込む -->
-    <script src="poi.js"></script> <!-- ポイ(網)関連のスクリプトを読み込む -->
-    <script src="stage.js"></script> <!-- ステージ関連のスクリプトを読み込む -->
+  <script>
+    var canvas = document.getElementById('pond');
+    var ctx = canvas.getContext('2d');
+  </script>
+
+  <script src="gameSystem.js"></script> <!-- ゲームシステム関連のスクリプトを読み込む -->
+  <script src="fish.js"></script> <!-- 魚関連のスクリプトを読み込む -->
+  <script src="poi.js"></script> <!-- ポイ(網)関連のスクリプトを読み込む -->
+  <script src="stage.js"></script> <!-- ステージ関連のスクリプトを読み込む -->
 </body>
 
 </html>
